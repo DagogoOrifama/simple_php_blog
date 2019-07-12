@@ -4,31 +4,12 @@
 <?php require_once("include/functions.php"); ?>
 <?php confirm_login(); ?>
 <?php require_once("include/admin_header.php"); ?>
+<?php require_once("include/admin_navigation.php"); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
             <br> <br>
-                <ul class="nav nav-pills nav-stacked" id="side_menu">
-                    <li class="active"><a href="dashboard.php"><span class="glyphicon glyphicon-th"></span>&nbsp; Dashboard</a></li>
-                    <li><a href="addNewPost.php"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Add New Post</a></li>
-                    <li><a href="categories.php"><span class="glyphicon glyphicon-tag"></span>&nbsp; Categories</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; Manage Admins</a></li>
-                    <li><a href="comments.php"><span class="glyphicon glyphicon-comment"></span>&nbsp; Comments
-                    <!-- Show the total number of unapproved comments not relevant to any post as a label-->
-                    <?php 
-                    // SQL function COUNT used to count data in a table
-                        $query_unapproved_total = "SELECT COUNT(*) FROM comments WHERE status='OFF'";
-                        $execute_unapproved_total = mysqli_query($connection, $query_unapproved_total);
-                        $unapproved_rows_total = mysqli_fetch_array($execute_unapproved_total);
-                        $total_unapproved_total = array_shift($unapproved_rows_total);
-                        
-                        if($total_unapproved_total > 0): ?>
-                        <span class="label label-warning pull-right"><?php  echo $total_unapproved_total; ?></span>   
-                        <?php endif; ?>
-                    </a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span>&nbsp; Live Blog</a></li>
-                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
-                </ul>
+          <?php  echo admin_nav(); ?>
             </div> 
             <div class="col-sm-10">
             <div> <?php echo error_message(); 

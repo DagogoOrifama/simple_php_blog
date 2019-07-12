@@ -1,6 +1,7 @@
 <?php require_once("include/sessions.php"); ?>
 <?php require_once("include/db.php"); ?>
 <?php require_once("include/functions.php"); ?>
+<?php require_once("include/admin_navigation.php"); ?>
 <?php confirm_login(); ?>
 <?php
 //ob_start();
@@ -45,16 +46,8 @@ if(isset($_POST['submit'])){
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
-            <br><br>
-                <ul class="nav nav-pills nav-stacked" id="side_menu">
-                    <li><a href="dashboard.php"><span class="glyphicon glyphicon-th"></span>&nbsp; Dashboard</a></li>
-                    <li><a href="addNewPost.php"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Add New Post</a></li>
-                    <li><a href="categories.php"><span class="glyphicon glyphicon-tag"></span>&nbsp; Categories</a></li>
-                    <li  class="active"><a href="admins.php"><span class="glyphicon glyphicon-user"></span>&nbsp; Manage Admins</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp; Comments</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-equalizer"></span>&nbsp; Live Blog</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
-                </ul>
+            <br> <br>
+            <?php  echo admin_nav(); ?>
             </div> 
             <div class="col-sm-10">
                 <h1>Manage Admins Access</h1>
