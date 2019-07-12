@@ -49,28 +49,7 @@ if(isset($_POST['submit'])){
 //ob_end_clean();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/adminstyles.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <title>Admin Dashboard | Edit Post</title>
-
-    <style>
-    .fieldInfo{
-    color: rgb(251,174, 44);
-    font-family: Bitter, georgia, 'Times New Roman', Times, serif;
-    font-size: 1.2em;
-    }
-    </style>
-
-</head>
-<body>
+<?php require_once("include/admin_header.php"); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
@@ -151,18 +130,4 @@ if(isset($_POST['submit'])){
             </div>
         </div> <!-- Ending of row -->
     </div>  <!-- Ending of container -->
-    <div id="footer">
-        <hr>
-        <p>Theme By | Dagogo Orifama | &copy; 2019 --- All right reserved</p>
-        <a style="color:white; text-decoration:none; cursor:point; font-weight:bold;" 
-            href="">
-        <p>
-            This site is onl used for stydy purpose and reserve all the right,  no one is allowed to distribute 
-            copies other than <br>&trade; dmisolutions.com &trade; facebook &trade; instagram
-        </p>
-        <hr>
-        </a>
-    </div>
-    <div style="height:10px; background:#27aae1;" ></div>
-</body>
-</html>
+    <?php require_once("include/admin_footer.php"); ?>
