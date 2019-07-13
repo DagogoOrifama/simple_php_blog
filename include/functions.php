@@ -10,12 +10,13 @@
     }
     function login_attempt($username, $password){
         global $connection;
-        $query = "SELECT * FROM registration 
-                     WHERE username='$username' && 
-                     password='$password'";
+        $query = "SELECT id, username, password FROM registration 
+                     WHERE username='$username'";
         $execute = mysqli_query($connection, $query);
         if($admin = mysqli_fetch_assoc($execute)){
-            return $admin;
+            if(password_verify($password, $admin['password'])){
+                return $admin;
+            }
         }else{
             return NULL;
         }
@@ -25,6 +26,7 @@
             return true;
         }
     }
+    
     function confirm_login(){
         if(!login()){
             $_SESSION['error_message'] = "Login Required";

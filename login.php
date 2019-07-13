@@ -11,13 +11,13 @@ if(isset($_POST['submit'])){
         $_SESSION['error_message'] = "All fields must be filled out";
         redirect_to("login.php");
     }else{
-        
+    
         $found_account = login_attempt($username, $password);
         $_SESSION['user_id'] = $found_account['id'];
         $_SESSION['username'] = $found_account['username'];
         if($found_account){
             $_SESSION['success_message'] = "Welcome {$_SESSION['username']}";
-            redirect_to("dashboard.php");
+            redirect_to("dashboard.php?id=1");
         }else{
             $_SESSION['error_message'] = "Wrong username / password combination";
            redirect_to("login.php");
@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
 
 </head>
 <body>
-<div style="height:10px; background:#27aae1;"></div>
+<div style="height:5px; background:#27aae1;"></div>
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -78,14 +78,12 @@ if(isset($_POST['submit'])){
         <div class="row">
           
             <div class="col-sm-4 col-sm-offset-4">
-
-          
+       
                 <br><br>
-                <br>
                 <div> <?php echo error_message(); 
                             echo success_message();
                 ?></div>
-                <h2>Login</h2>
+                <h2>Administrator</h2>
                 
                 <div>
                     <form action="login.php" method="POST">
@@ -119,7 +117,6 @@ if(isset($_POST['submit'])){
                 </div>
             </div>
         </div> <!-- Ending of row -->
+        <br><br><br><br><br><br>
     </div>  <!-- Ending of container -->
-
-</body>
-</html>
+    <?php require_once("include/admin_footer.php"); ?>

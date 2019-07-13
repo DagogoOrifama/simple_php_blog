@@ -25,8 +25,17 @@ if(isset($_POST['submit'])){
         $_SESSION['error_message'] = "Password/confirm password must be the same";
         redirect_to("admins.php");
     }else{
+        /* Encrypt password using password_hash which is a one-way encrypting algorithm, it also handles
+           the generation of salt included in the password. Bcrypt is used by default to generate the hash,Argon2 can
+           be use aswell.
+           Use the bcrypt algorithm (default as of PHP 5.5.0). Note that this constant is designed to change over 
+           time as new and stronger algorithms are added to PHP. For that reason, the length of the result from using 
+           this identifier can change over time. Therefore, it is recommended to store the result in a database column
+           that can expand beyond 60 characters (255 characters would be a good choice)
+        */
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO registration (datetime, username, password, addedby) 
-                    VALUES('$dateTime', '$username', '$password', '$addedby')";
+                    VALUES('$dateTime', '$username', '$hashed_password', '$addedby')";
 
         $execute = mysqli_query($connection, $query);
         if($execute){
